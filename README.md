@@ -66,7 +66,7 @@ Traditional security relies on copy-pasting a password (client secret) from Azur
 *   **The Object:** Federated Identity Credential Policy.
 *   **Why:** This writes an explicit verification rule into Entra ID. When GitHub passes its OpenID Connect (OIDC) token assertion, Entra ID decrypts the token, reads the Subject Claim (`repo:Compcode1/key-vault-zero-trust:ref:refs/heads/main`), and performs a strict binary string match. If a single character or casing is mismatched, access is instantly denied.
 
----
+When you use a traditional client secret or certificate, that password is a static string stored forever inside GitHub's settings; if an attacker compromises a developer's machine or accesses the GitHub organization secrets pane, they can steal that permanent key, take it home, and use it to breach Azure from anywhere in the world indefinitely until someone notices and rotates it. With WIF and OpenID Connect (OIDC), there is no password to steal. Instead, GitHub issues an ephemeral token that expires in less than an hour and is bound exclusively to a live, active execution thread on an official runner. While you are technically trusting the cryptographic integrity of GitHub's token office, you are shifting your defense from a highly vulnerable model (humans copy-pasting and leaking static passwords) to a hardened, cloud-scale platform relationship where tokens are short-lived, fully audited, and completely useless the second the specific automation job finishes running.
 
 ## Phase 4: Granting Resource Access & Pipeline Execution
 
