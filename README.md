@@ -56,7 +56,7 @@ Traditional security relies on copy-pasting a password (client secret) from Azur
 ### The Concrete Configuration Steps
 
 #### 1. Configure the Federated Identity Credential
-*   **Path:** Entra Admin Center -> App registrations -> `app-automation-bot` -> Certificates & secrets -> Federated credentials -> + Add credential.
+*   **Path:** Entra Admin Center -> App registrations -> `app-automation-bot` -> Certificates & secrets -> Federated credentials -> + Add credential. 
 *   **Scenario Selection:** Select **GitHub Actions deploying Azure resources** from the dropdown menu.
 *   **The Configuration Settings:**
     *   **Organization:** `Compcode1` *(Must match your exact GitHub username case-sensitively)*.
